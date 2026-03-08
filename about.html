@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Doom Spending Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .page { display: none; }
+        .page.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="home.html" class="text-2xl font-bold text-blue-600">DoomSpend</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="home.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="calculators.html" class="text-gray-700 hover:text-blue-600 font-medium">All Calculators</a>
+                    <a href="audits.html" class="text-gray-700 hover:text-blue-600 font-medium">My Audits</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="privacy.html" class="text-gray-700 hover:text-blue-600 font-medium">Privacy</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="home.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                <a href="calculators.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">All Calculators</a>
+                <a href="audits.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">My Audits</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">About</a>
+                <a href="privacy.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <!-- About Page -->
+        <div id="about" class="page active">
+            <div class="max-w-3xl mx-auto px-4 py-12">
+                <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-8">About Us</h1>
+                    
+                    <div class="prose text-gray-600 space-y-4">
+                        <p>
+                            Welcome to DoomSpend Calculator, a passion project born from the realization that financial anxiety affects millions of people worldwide. We created this platform to address a specific modern challenge: the tendency to spend money as a reaction to stress, uncertainty, or emotional distress. Our mission is simple yet profound—to help individuals regain control over their financial lives through awareness, education, and actionable tools.
+                        </p>
+                        
+                        <p>
+                            The concept of "doom spending" emerged during recent years of global uncertainty, when many people found themselves making impulsive purchases as a form of escapism or comfort. While there's nothing inherently wrong with treating yourself occasionally, habitual spending driven by anxiety can derail long-term financial goals and create cycles of debt and regret. We recognized that traditional budgeting apps often fail to address the psychological aspects of spending, focusing instead on rigid categorization and restriction.
+                        </p>
+                        
+                        <p>
+                            Our approach is different. We believe that sustainable financial change comes from understanding the "why" behind your spending, not just the "what." Our calculator is designed to create an emotional connection to your money by showing you not just what you're spending, but what you're potentially losing in future wealth. When you see that your daily coffee habit could translate to thousands of dollars in investment growth over a decade, the abstract concept of "saving money" becomes concrete and motivating.
+                        </p>
+                        
+                        <p>
+                            Privacy and security are foundational to our platform. In an era where personal data is constantly harvested and monetized, we made a deliberate choice to build a tool that requires no registration, stores no data on external servers, and respects your anonymity completely. All calculations happen within your browser using client-side JavaScript and TypeScript. When you save an audit, it's stored locally in your browser's memory—never transmitted to our servers or any third party. This commitment to privacy means you can explore your financial situation with complete confidence.
+                        </p>
+                        
+                        <p>
+                            Our team consists of financial educators, software developers, and behavioral economists who understand that money management is as much about psychology as it is about mathematics. We've spent countless hours refining our algorithms to provide realistic, achievable recommendations rather than idealistic targets that set users up for failure. The 30% reduction suggestion in our calculator is based on behavioral research showing that moderate changes are more likely to stick than drastic overhauls.
+                        </p>
+                        
+                        <p>
+                            Looking ahead, we're committed to expanding our suite of tools while maintaining our core principles of privacy, accessibility, and psychological awareness. We plan to introduce features that help users visualize their progress over time, compare their spending to regional averages (anonymously), and develop personalized strategies for their specific financial situations. Our goal is to become the most trusted resource for individuals looking to break free from destructive spending patterns and build lasting wealth.
+                        </p>
+                        
+                        <p>
+                            Thank you for trusting us with your financial journey. Whether you're here to make a quick calculation or embark on a complete financial transformation, we're honored to be part of your story. Remember, every great financial future begins with a single step—and you've already taken yours by seeking out tools to improve your situation. We're here to support you every step of the way.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-auto">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">DoomSpend</h3>
+                    <p class="text-gray-400 mb-4">Take control of your financial future. Calculate, analyze, and optimize your spending habits with our privacy-focused tools.</p>
+                    <p class="text-sm text-gray-500">100% Client-side processing. Your data never leaves your device.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="home.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="calculators.html" class="text-gray-400 hover:text-white transition">All Calculators</a></li>
+                        <li><a href="audits.html" class="text-gray-400 hover:text-white transition">My Audits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal & Info</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 DoomSpend Calculator. All rights reserved. This website runs entirely in your browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+            document.getElementById('about').classList.add('active');
+    </script>
+</body>
+</html>

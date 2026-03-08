@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Doom Spending Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .page { display: none; }
+        .page.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="home.html" class="text-2xl font-bold text-blue-600">DoomSpend</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="home.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="calculators.html" class="text-gray-700 hover:text-blue-600 font-medium">All Calculators</a>
+                    <a href="audits.html" class="text-gray-700 hover:text-blue-600 font-medium">My Audits</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="privacy.html" class="text-gray-700 hover:text-blue-600 font-medium">Privacy</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="home.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                <a href="calculators.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">All Calculators</a>
+                <a href="audits.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">My Audits</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">About</a>
+                <a href="privacy.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <!-- Privacy Policy Page -->
+        <div id="privacy" class="page active">
+            <div class="max-w-3xl mx-auto px-4 py-12">
+                <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
+                    
+                    <div class="prose text-gray-600 space-y-4">
+                        <p class="font-semibold text-lg">Last Updated: March 8, 2026</p>
+                        
+                        <p>
+                            At DoomSpend Calculator, we take your privacy seriously. This Privacy Policy explains how we handle information when you use our website and services. Our commitment to privacy is absolute: we designed this platform from the ground up to ensure that your sensitive financial data never leaves your device. This document details our practices regarding data collection, storage, and usage.
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Information We Do Not Collect</h3>
+                        <p>
+                            Unlike most online services, we do not collect, store, or transmit any of your personal or financial information to our servers. When you enter spending amounts, select categories, or adjust reduction sliders, all processing occurs locally within your web browser. We do not use cookies to track your behavior across the internet, nor do we employ analytics tools that would reveal your usage patterns to third parties. Your financial data is yours alone, and we believe it should stay that way.
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Local Storage and Session Data</h3>
+                        <p>
+                            To enhance your experience, we use your browser's session storage to temporarily save audit data while you navigate the site. This allows you to view your spending calculations on the audits page without requiring you to re-enter information. This data exists only in your browser's memory and is automatically cleared when you close the browser tab or window. We do not use localStorage or any persistent storage mechanisms that would retain your data between sessions. If you refresh the page, your saved audits will reset, ensuring that no financial information remains on your device longer than necessary.
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Technical Information</h3>
+                        <p>
+                            Like all websites, our server automatically receives certain technical information when you visit our site, including your IP address, browser type, operating system, and the pages you request. This information is used solely for server maintenance, security monitoring, and improving site performance. We do not correlate this technical data with any financial calculations you perform, nor do we sell or share this information with advertisers or marketing companies. Logs containing IP addresses are automatically deleted after 30 days.
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Third-Party Services</h3>
+                        <p>
+                            Our website uses Tailwind CSS via CDN (Content Delivery Network) for styling and Chart.js for data visualization. These resources are loaded from external servers, which may log basic request information such as your IP address. However, these services do not have access to any data you enter into our calculator forms. We have selected these providers based on their own privacy commitments and industry reputation. No other third-party scripts, trackers, or advertising networks are present on our site.
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Data Security</h3>
+                        <p>
+                            Since all financial calculations occur client-side, the risk of data breach is minimized. We employ HTTPS encryption for all data transmitted between your browser and our servers, ensuring that your connection to our site is secure. We regularly update our security practices to address emerging threats and vulnerabilities. However, users should be aware that the security of data stored in browser memory depends on their own device security—if you share a computer or use public terminals, be sure to close the browser after use.
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Children's Privacy</h3>
+                        <p>
+                            Our services are not directed to individuals under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately so we can remove such information from our records.
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Changes to This Policy</h3>
+                        <p>
+                            We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify users of any material changes by posting the new policy on this page with an updated "Last Updated" date. We encourage you to review this policy periodically to stay informed about how we protect your information.
+                        </p>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Contact Us</h3>
+                        <p>
+                            If you have any questions about this Privacy Policy or our privacy practices, please contact us through our website. We are committed to transparency and will respond to your inquiries promptly. Your trust is our most valuable asset, and we work continuously to maintain it through responsible data stewardship.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-auto">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">DoomSpend</h3>
+                    <p class="text-gray-400 mb-4">Take control of your financial future. Calculate, analyze, and optimize your spending habits with our privacy-focused tools.</p>
+                    <p class="text-sm text-gray-500">100% Client-side processing. Your data never leaves your device.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="home.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="calculators.html" class="text-gray-400 hover:text-white transition">All Calculators</a></li>
+                        <li><a href="audits.html" class="text-gray-400 hover:text-white transition">My Audits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal & Info</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 DoomSpend Calculator. All rights reserved. This website runs entirely in your browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+            document.getElementById('privacy').classList.add('active');
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Calculators - Doom Spending Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .page { display: none; }
+        .page.active { display: block; }
+        .slide-in { animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chart-container { position: relative; height: 300px; width: 100%; }
+        input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; border-radius: 5px; background: #e5e7eb; outline: none; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #3b82f6; cursor: pointer; }
+        input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: #3b82f6; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigation (same as home.html, but links point to .html files) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="home.html" class="text-2xl font-bold text-blue-600">DoomSpend</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="home.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="calculators.html" class="text-gray-700 hover:text-blue-600 font-medium">All Calculators</a>
+                    <a href="audits.html" class="text-gray-700 hover:text-blue-600 font-medium">My Audits</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="privacy.html" class="text-gray-700 hover:text-blue-600 font-medium">Privacy</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="home.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                <a href="calculators.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">All Calculators</a>
+                <a href="audits.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">My Audits</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">About</a>
+                <a href="privacy.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <!-- Calculators List Page -->
+        <div id="calculators" class="page active">
+            <div class="max-w-4xl mx-auto px-4 py-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-8 text-center">All Calculators</h1>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-12">
+                    <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-200 cursor-pointer" onclick="window.location.href='home.html'">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 3.666V14m-6.118 4.25l.326.458a1.5 1.5 0 002.448 0l.326-.458a12 12 0 002.448-3.444l.118-.234a.75.75 0 00-.118-.82l-.326-.458a12 12 0 00-2.448-3.444l-.326-.458a1.5 1.5 0 00-2.448 0l-.326.458a12 12 0 00-2.448 3.444l-.118.234a.75.75 0 00.118.82l.326.458a12 12 0 002.448 3.444z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Doom Spending Calculator</h3>
+                        <p class="text-gray-600">Analyze your discretionary spending and discover investment opportunities. Calculate how much you could save and invest by reducing unnecessary expenses.</p>
+                    </div>
+
+                    <div class="bg-gray-100 rounded-xl shadow-lg p-6 opacity-60">
+                        <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Coming Soon</h3>
+                        <p class="text-gray-600">More financial calculators are on the way to help you manage your money better.</p>
+                    </div>
+                </div>
+
+                <div class="prose max-w-none text-gray-600">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Why Use Our Calculators?</h3>
+                    <p class="mb-4">
+                        Financial literacy is the foundation of economic stability and personal freedom. Our suite of calculators is designed to demystify complex financial concepts and provide you with clear, actionable data about your money. Unlike many online tools that require account creation or store your data on remote servers, our calculators operate entirely within your browser. This means your sensitive financial information never leaves your device, ensuring maximum privacy and security.
+                    </p>
+                    <p class="mb-4">
+                        The Doom Spending Calculator is our flagship tool, specifically engineered to combat the modern phenomenon of stress-induced spending. By inputting your regular discretionary expenses, you can visualize the long-term impact of these small purchases. The calculator doesn't just show you what you're spending—it demonstrates what you could be earning if that money were invested instead. This perspective shift is crucial for developing healthy financial habits and breaking free from cycles of debt and anxiety.
+                    </p>
+                    <p>
+                        We believe that everyone deserves access to high-quality financial planning tools regardless of their technical expertise or financial background. That's why we've focused on creating an intuitive, user-friendly interface that guides you through the calculation process step by step. Whether you're a college student learning to budget for the first time or a professional looking to optimize your savings strategy, our calculators provide valuable insights tailored to your unique situation. Stay tuned as we expand our collection to include retirement planning, debt payoff strategies, and investment growth projections.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (same as home) -->
+    <footer class="bg-gray-900 text-white mt-auto">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">DoomSpend</h3>
+                    <p class="text-gray-400 mb-4">Take control of your financial future. Calculate, analyze, and optimize your spending habits with our privacy-focused tools.</p>
+                    <p class="text-sm text-gray-500">100% Client-side processing. Your data never leaves your device.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="home.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="calculators.html" class="text-gray-400 hover:text-white transition">All Calculators</a></li>
+                        <li><a href="audits.html" class="text-gray-400 hover:text-white transition">My Audits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal & Info</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 DoomSpend Calculator. All rights reserved. This website runs entirely in your browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Minimal script for mobile menu and page activation
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+            document.getElementById('calculators').classList.add('active');
+    </script>
+</body>
+</html>

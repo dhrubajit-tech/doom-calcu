@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Details - Doom Spending Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .page { display: none; }
+        .page.active { display: block; }
+        .chart-container { position: relative; height: 300px; width: 100%; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="home.html" class="text-2xl font-bold text-blue-600">DoomSpend</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="home.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                    <a href="calculators.html" class="text-gray-700 hover:text-blue-600 font-medium">All Calculators</a>
+                    <a href="audits.html" class="text-gray-700 hover:text-blue-600 font-medium">My Audits</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="privacy.html" class="text-gray-700 hover:text-blue-600 font-medium">Privacy</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="home.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                <a href="calculators.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">All Calculators</a>
+                <a href="audits.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">My Audits</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">About</a>
+                <a href="privacy.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <!-- Calculation Detail Page -->
+        <div id="calculation" class="page active">
+            <div class="max-w-4xl mx-auto px-4 py-12">
+                <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+                    <h1 class="text-3xl font-bold text-gray-900 mb-6">Detailed Calculation Results</h1>
+                    
+                    <div id="calculationContent">
+                        <!-- Content populated by JavaScript -->
+                    </div>
+
+                    <div class="mt-8 flex space-x-4">
+                        <button onclick="saveAudit()" class="flex-1 bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition duration-200">
+                            Save This Audit
+                        </button>
+                        <a href="home.html" class="flex-1 bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-700 transition duration-200 text-center block">
+                            New Calculation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-auto">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">DoomSpend</h3>
+                    <p class="text-gray-400 mb-4">Take control of your financial future. Calculate, analyze, and optimize your spending habits with our privacy-focused tools.</p>
+                    <p class="text-sm text-gray-500">100% Client-side processing. Your data never leaves your device.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="home.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="calculators.html" class="text-gray-400 hover:text-white transition">All Calculators</a></li>
+                        <li><a href="audits.html" class="text-gray-400 hover:text-white transition">My Audits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal & Info</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 DoomSpend Calculator. All rights reserved. This website runs entirely in your browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Type definition
+        /**
+         * @typedef {Object} Audit
+         * @property {string} id
+         * @property {string} category
+         * @property {number} amount
+         * @property {string} frequency
+         * @property {number} annualSpending
+         * @property {number} reductionAmount
+         * @property {number} investmentAmount
+         * @property {number} currentReduction
+         * @property {Date} createdAt
+         */
+
+        let savedAudits = JSON.parse(localStorage.getItem('doomSpendAudits') || '[]');
+        savedAudits = savedAudits.map(audit => ({ ...audit, createdAt: new Date(audit.createdAt) }));
+
+        /** @type {Chart|null} */
+        let detailChart = null;
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function getMultiplier(frequency) {
+            switch(frequency) {
+                case 'daily': return 365;
+                case 'weekly': return 52;
+                case 'monthly': return 12;
+                default: return 52;
+            }
+        }
+
+        // Load calculation from sessionStorage and populate page
+        function loadCalculation() {
+            const saved = sessionStorage.getItem('currentCalculation');
+            if (!saved) {
+                alert('No calculation data found. Please calculate from home page.');
+                window.location.href = 'home.html';
+                return;
+            }
+
+            const currentCalculation = JSON.parse(saved);
+
+            const content = document.getElementById('calculationContent');
+            content.innerHTML = `
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-red-50 p-6 rounded-xl border border-red-200 text-center">
+                        <p class="text-sm text-red-600 font-medium mb-1">Annual Spending</p>
+                        <p class="text-3xl font-bold text-red-700">$${currentCalculation.annualSpending.toLocaleString('en-US', {maximumFractionDigits: 2})}</p>
+                        <p class="text-xs text-red-500 mt-1">${currentCalculation.category} - ${currentCalculation.frequency}</p>
+                    </div>
+                    <div class="bg-yellow-50 p-6 rounded-xl border border-yellow-200 text-center">
+                        <p class="text-sm text-yellow-600 font-medium mb-1">Recommended Reduction</p>
+                        <p class="text-3xl font-bold text-yellow-700">$${currentCalculation.reductionAmount.toLocaleString('en-US', {maximumFractionDigits: 2})}</p>
+                        <p class="text-xs text-yellow-500 mt-1">30% reduction target</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-xl border border-green-200 text-center">
+                        <p class="text-sm text-green-600 font-medium mb-1">Investment Potential</p>
+                        <p class="text-3xl font-bold text-green-700">$${currentCalculation.investmentAmount.toLocaleString('en-US', {maximumFractionDigits: 2})}</p>
+                        <p class="text-xs text-green-500 mt-1">Annual investment opportunity</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6 mb-8">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Mathematical Breakdown</h3>
+                    <div class="space-y-3 text-gray-600">
+                        <p><span class="font-medium">Input Amount:</span> $${currentCalculation.amount} per ${currentCalculation.frequency}</p>
+                        <p><span class="font-medium">Annual Multiplier:</span> ${getMultiplier(currentCalculation.frequency)} times per year</p>
+                        <p><span class="font-medium">Total Annual Spending:</span> $${currentCalculation.amount} × ${getMultiplier(currentCalculation.frequency)} = $${currentCalculation.annualSpending.toLocaleString()}</p>
+                        <p><span class="font-medium">Recommended Reduction (30%):</span> $${currentCalculation.annualSpending} × 0.30 = $${currentCalculation.reductionAmount.toLocaleString()}</p>
+                        <p><span class="font-medium">Investment Allocation:</span> Full reduction amount of $${currentCalculation.investmentAmount.toLocaleString()} should be directed to investment accounts</p>
+                    </div>
+                </div>
+                
+                <div class="chart-container mb-6">
+                    <canvas id="detailChart"></canvas>
+                </div>
+            `;
+
+            // Initialize chart
+            setTimeout(() => {
+                const ctx = document.getElementById('detailChart').getContext('2d');
+                if (detailChart) detailChart.destroy();
+                
+                detailChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Current Spending', 'Potential Savings', 'Investment Opportunity'],
+                        datasets: [{
+                            data: [currentCalculation.annualSpending, currentCalculation.reductionAmount, currentCalculation.investmentAmount],
+                            backgroundColor: ['#ef4444', '#eab308', '#22c55e'],
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '60%',
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: { padding: 20, font: { size: 14, weight: 'bold' } }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Financial Distribution Analysis',
+                                font: { size: 18 }
+                            }
+                        }
+                    }
+                });
+            }, 100);
+
+            // Store in window for saveAudit to access
+            window.currentCalculation = currentCalculation;
+        }
+
+        // Save audit
+        function saveAudit() {
+            if (!window.currentCalculation) {
+                alert('No calculation data to save.');
+                return;
+            }
+
+            const audit = {
+                id: Date.now().toString(),
+                category: window.currentCalculation.category,
+                amount: window.currentCalculation.amount,
+                frequency: window.currentCalculation.frequency,
+                annualSpending: window.currentCalculation.annualSpending,
+                reductionAmount: window.currentCalculation.reductionAmount,
+                investmentAmount: window.currentCalculation.investmentAmount,
+                currentReduction: 30,
+                createdAt: new Date()
+            };
+
+            savedAudits.push(audit);
+            localStorage.setItem('doomSpendAudits', JSON.stringify(savedAudits));
+
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Saved!';
+            btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+            btn.classList.add('bg-gray-600');
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('bg-gray-600');
+                btn.classList.add('bg-green-600', 'hover:bg-green-700');
+            }, 2000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('calculation').classList.add('active');
+            loadCalculation();
+        });
+    </script>
+</body>
+</html>
