@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://doomcalculator.online/spending-calculator.html" />
+    <script type="application/Id+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "doom spending calculator",
+      "url": "https://doomcalculator.online/spending-calculator.html",
+      "availability": "https://schema.org/InStock",
+      "description": "Want to spend more wisely and safely? Calculate how much you should spend from your daily, weekly and monthly doom spending. We provide the best accurate and real calculation how much you should spend on your daily, weekly and monthly life.",
+      "keywords": "Spending auditor, spending calculator, doom calculator, doom spendig calculator, daily life calculator, weekly life calculator, monthly life calculator, doom spending auditor, investment calculator, how much i should invest, how much i should spend, how much i could save or invest."
+    }
+  </script>
+        <!-- <--google adsense-->
+         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3607684906423836"
+     crossorigin="anonymous"></script>
+         <!-- google search console -->
+    <meta name="google-site-verification" content="amZaQKzbaZTPwAs2mTw0opN6wo-kmG_0JVtOSu6Dk-c" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F06LYBMET6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F06LYBMET6');
+</script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Spending calculator</title>
+    <meta name="keywords" content="Spending auditor, spending calculator, doom calculator, doom spendig calculator, daily life calculator, weekly life calculator, monthly life calculator, doom spending auditor, investment calculator, how much i should invest, how much i should spend, how much i could save or invest.">
+    <link rel="alternate" type="embed" href="https://doomcalculator.online/spending-calculator.html/embed" />
+    <meta property="og:description" content="Want to spend more wisely and safely? Calculate how much you should spend from your daily, weekly and monthly doom spending. We provide the best accurate and real calculation how much you should spend on your daily, weekly and monthly life.">
+    <meta property="og:title" content="Doom Spending calculator" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://doomcalculator.online/spending-calculator.html" />
+    <meta property="og:site_name" content="Doom Spending calculator" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .page { display: none; }
+        .page.active { display: block; }
+        .slide-in { animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chart-container { position: relative; height: 300px; width: 100%; }
+        input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; border-radius: 5px; background: #e5e7eb; outline: none; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #3b82f6; cursor: pointer; }
+        input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: #3b82f6; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-10">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-blue-600">Doom Calculator</div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="spending-calculator.html" class="text-black hover:text-blue-600 font-medium">Home</a>
+                    <a href="index.html" class="text-black hover:text-blue-600 font-medium">All Calculators</a>
+                    <a href="audits.html" class="text-black hover:text-blue-600 font-medium">My Audits</a>
+                    <a href="about.html" class="text-black hover:text-blue-600 font-medium">About</a>
+                    <a href="privacy.html" class="text-black hover:text-blue-600 font-medium">Privacy</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-black hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="spending-calculator.html" class="block px-3 py-2 text-black hover:text-blue-600 font-medium">Home</a>
+                <a href="index.html" class="block px-3 py-2 text-black hover:text-blue-600 font-medium">All Calculators</a>
+                <a href="audits.html" class="block px-3 py-2 text-black hover:text-blue-600 font-medium">My Audits</a>
+                <a href="about.html" class="block px-3 py-2 text-black hover:text-blue-600 font-medium">About</a>
+                <a href="privacy.html" class="block px-3 py-2 text-black hover:text-blue-600 font-medium">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- index/Calculator Page -->
+        <div id="index" class="page active">
+            <div class="max-w-4xl mx-auto px-4 py-12">
+                <div class="text-center mb-12">
+                    <h1 class="text-3xl font-bold text-black mb-2 "><span class="text-blue-500 italic">Spending</span> Calculator</h1>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8">
+                    <h2 class="text-2xl font-semibold text-black mb-6">Calculate Your Spending</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-black mb-2">Spending Category</label>
+                            <select id="category" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="dining">Dining Out</option>
+                                <option value="subscriptions">Subscriptions</option>
+                                <option value="shopping">Impulse Shopping</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="transport">Transportation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-black mb-2">Amount</label>
+                            <input type="number" id="amount" placeholder="0.00" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" oninput="calculateRealtime()">
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-black mb-2">Frequency</label>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="frequency" value="daily" class="mr-2 text-blue-600" onchange="calculateRealtime()">
+                                <span>Daily</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="frequency" value="weekly" class="mr-2 text-blue-600" checked onchange="calculateRealtime()">
+                                <span>Weekly</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="frequency" value="monthly" class="mr-2 text-blue-600" onchange="calculateRealtime()">
+                                <span>Monthly</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button onclick="calculateAndNavigate()" class="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-200 mb-8">
+                        Calculate & View Details
+                    </button>
+                </div>
+                    <!-- Real-time Results -->
+                <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-8">
+                    <div id="realtimeResults" class="hidden slide-in">
+                        <div class="grid md:grid-cols-3 gap-4 mb-8">
+                            <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                                <p class="text-sm text-red-600 font-medium">Annual Spending</p>
+                                <p class="text-2xl font-bold text-red-700" id="annualSpending">$0</p>
+                            </div>
+                            <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                                <p class="text-sm text-yellow-600 font-medium">Recommended Reduction</p>
+                                <p class="text-2xl font-bold text-yellow-700" id="recommendedReduction">$0</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <p class="text-sm text-green-600 font-medium">Potential Investment</p>
+                                <p class="text-2xl font-bold text-green-700" id="potentialInvestment">$0</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-container mb-6">
+                            <canvas id="mainChart"></canvas>
+                        </div>
+
+                        <button onclick="saveAudit()" class="w-full bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition duration-200">
+                            Save This Audit
+                        </button>
+                    </div>
+                </div>
+
+                <div class="prose max-w-none text-black">
+                    <h3 class="text-2xl font-semibold text-black mb-4">Understanding Doom Spending</h3>
+                    <p class="mb-4">
+                        Doom spending refers to the tendency to spend money impulsively or excessively, often as a coping mechanism for stress, anxiety, or uncertainty about the future. In today's fast-paced world, many individuals find themselves trapped in cycles of spending that provide temporary comfort but lead to long-term financial stress. Our calculator is designed to help you break free from this cycle by providing clear, actionable insights into your spending patterns.
+                    </p>
+                    <p class="mb-4">
+                        The concept of doom spending has gained significant attention in recent years as economic uncertainty and global events have influenced consumer behavior. Whether it's ordering takeout instead of cooking, subscribing to multiple streaming services, or making impulse purchases online, these small expenses accumulate over time and can severely impact your financial health. By using our calculator, you're taking the first step toward financial awareness and responsibility.
+                    </p>
+                    <p>
+                        Our tool calculates your annual spending based on your input frequency and amount, then recommends a realistic reduction percentage. The money you save can be redirected toward investments, emergency funds, or debt repayment. Remember, small changes in daily habits can lead to significant financial improvements over time. This calculator operates entirely on your device, ensuring complete privacy and security of your financial data.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Premium Footer -->
+    <footer class="bg-gray-900 text-white mt-auto">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">Doom Calculator</h3>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="spending-calculator.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">All Calculators</a></li>
+                        <li><a href="audits.html" class="text-gray-400 hover:text-white transition">My Audits</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal & Info</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition">Disclaimer</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 DoomSpend Calculator. All rights reserved. This website runs entirely in your browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        console.log('%cWelcome to Doom Calculator! Remember: the real power is in understanding your numbers, not just getting a score. Use this tool as your personal KPI dashboard and check back monthly to track your growth. The more you know, the more you grow.', 'color: #2933c1; font-family: Inter; font-size: 14px;');
+        
+        // TypeScript-like strict typing using JSDoc
+        /**
+         * @typedef {Object} Audit
+         * @property {string} id
+         * @property {string} category
+         * @property {number} amount
+         * @property {string} frequency
+         * @property {number} annualSpending
+         * @property {number} reductionAmount
+         * @property {number} investmentAmount
+         * @property {number} currentReduction
+         * @property {Date} createdAt
+         */
+
+        // Load saved audits from localStorage
+        let savedAudits = JSON.parse(localStorage.getItem('doomSpendAudits') || '[]');
+        // Convert date strings back to Date objects
+        savedAudits = savedAudits.map(audit => ({ ...audit, createdAt: new Date(audit.createdAt) }));
+
+        /** @type {Chart|null} */
+        let mainChart = null;
+
+        // Current calculation state
+        let currentCalculation = {
+            category: '',
+            amount: 0,
+            frequency: 'weekly',
+            annualSpending: 0,
+            reductionAmount: 0,
+            investmentAmount: 0
+        };
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Calculate multiplier based on frequency
+        function getMultiplier(frequency) {
+            switch(frequency) {
+                case 'daily': return 365;
+                case 'weekly': return 52;
+                case 'monthly': return 12;
+                default: return 52;
+            }
+        }
+
+        // Real-time calculation
+        function calculateRealtime() {
+            const amount = parseFloat(document.getElementById('amount').value) || 0;
+            const frequency = document.querySelector('input[name="frequency"]:checked')?.value || 'weekly';
+            const category = document.getElementById('category').value;
+            
+            if (amount <= 0) {
+                document.getElementById('realtimeResults').classList.add('hidden');
+                return;
+            }
+            
+            const multiplier = getMultiplier(frequency);
+            const annualSpending = amount * multiplier;
+            const reductionAmount = annualSpending * 0.3; // 30% recommended reduction
+            const investmentAmount = reductionAmount; // Invest what you save
+            
+            // Update current calculation
+            currentCalculation = {
+                category,
+                amount,
+                frequency,
+                annualSpending,
+                reductionAmount,
+                investmentAmount
+            };
+            
+            // Update display
+            document.getElementById('annualSpending').textContent = '$' + annualSpending.toLocaleString('en-US', {maximumFractionDigits: 2});
+            document.getElementById('recommendedReduction').textContent = '$' + reductionAmount.toLocaleString('en-US', {maximumFractionDigits: 2});
+            document.getElementById('potentialInvestment').textContent = '$' + investmentAmount.toLocaleString('en-US', {maximumFractionDigits: 2});
+            
+            document.getElementById('realtimeResults').classList.remove('hidden');
+            
+            // Update chart
+            updateMainChart(annualSpending, reductionAmount, investmentAmount);
+        }
+
+        // Update main chart
+        function updateMainChart(spending, reduction, investment) {
+            const ctx = document.getElementById('mainChart').getContext('2d');
+            
+            if (mainChart) {
+                mainChart.destroy();
+            }
+            
+            mainChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Current Spending', 'Potential Savings', 'Recommended Investment'],
+                    datasets: [{
+                        data: [spending, reduction, investment],
+                        backgroundColor: ['#ef4444', '#eab308', '#22c55e'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: { size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': $' + context.parsed.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Calculate and navigate to detail page
+        function calculateAndNavigate() {
+            if (currentCalculation.amount <= 0) {
+                alert('Please enter an amount first');
+                return;
+            }
+            
+            // Save current calculation to sessionStorage
+            sessionStorage.setItem('currentCalculation', JSON.stringify(currentCalculation));
+            window.location.href = 'calculation.html';
+        }
+
+        // Save audit
+        function saveAudit() {
+            if (currentCalculation.amount <= 0) {
+                alert('Please calculate something first');
+                return;
+            }
+            
+            const audit = {
+                id: Date.now().toString(),
+                category: currentCalculation.category,
+                amount: currentCalculation.amount,
+                frequency: currentCalculation.frequency,
+                annualSpending: currentCalculation.annualSpending,
+                reductionAmount: currentCalculation.reductionAmount,
+                investmentAmount: currentCalculation.investmentAmount,
+                currentReduction: 30, // Default 30%
+                createdAt: new Date()
+            };
+            
+            savedAudits.push(audit);
+            localStorage.setItem('doomSpendAudits', JSON.stringify(savedAudits));
+            
+            // Show success message
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Saved!';
+            btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+            btn.classList.add('bg-gray-600');
+            
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('bg-gray-600');
+                btn.classList.add('bg-green-600', 'hover:bg-green-700');
+            }, 2000);
+        }
+
+        // No need for renderAudits or other page-specific functions here
+
+        // Initialize: set active page (index)
+            document.getElementById('spending-calculator').classList.add('active');
+    </script>
+</body>
+</html>
